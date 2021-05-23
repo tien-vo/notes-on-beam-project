@@ -1,0 +1,106 @@
+\section{Kinetic plasma dispersion relation}\label{sec:dispersion relation}
+
+First, we establish the conditions for the formulation of waves in a kinetic
+plasma. Specifically, the focus is on the instability in beam-plasma processes
+and beam evolution. In this section, we will heavily rely on Benz textbook for
+the theoretical discussion in \cite{Benz1993}. Under a classical, macroscopic
+electromagnetic field, the Vlasov equation describes the dynamics of one
+particle species $f_s$ in configuration space $(\vb{r}_s,\vb{p}_s=m\vb{v}_s)$ is
+
+\begin{equation}\label{eq:vlasov equation}
+    \frac{\partial f_s}{\partial t}
+    +\vb{v}_s\vdot\grad{f_s}
+    +\frac{q_s}{m_s}\qty(\vb{E}+\vb{v}_s\times\vb{B})
+    \vdot\frac{\partial f_s}{\partial\vb{v}_s}
+\end{equation}
+where we have assumed a collisionless distribution $f_s$ of particles. Now, we
+suppose the system is linearized with a homogenous and stationary unperturbed
+distribution $f_s^0$ and write
+$f_s\qty(\vb{r}_s,\vb{v}_s,t)
+=f_s^0\qty(\vb{v}_s)+f_s^1\qty(\vb{r}_s,\vb{v}_s,t)$.
+Suppose electric oscillations are aligned along the background magnetic field
+$(\vb{k}\parallel\vb{B}_0)$. Then \cref{eq:vlasov equation} under a Fourier
+transform (such that $\grad\to i\vb{k}$ and $\partial_t\to-i\omega$) is
+\begin{equation}
+    -i\omega f_s^1
+    +i\vb{k}\vdot\vb{v}_sf_s^1
+    -i\frac{q_s\phi}{m_s}\vb{k}\vdot\frac{\partial f_s^0}{\partial\vb{v}_s}=0
+\end{equation}
+where $\phi(\vb{r}_s,t)$ is the scalar potential such that $\vb{E}=-\grad\phi$.
+We can then invert and solve for $f_s^1$
+\begin{equation}\label{eq:distribution perturbation}
+    f_s^1
+    =\frac{q_s\phi}{m_s}
+    \frac{\vb{k}\vdot\partial f_s^0/\partial\vb{v}_s}
+    {\vb{k}\vdot\vb{v}_s-\omega}
+\end{equation}
+which normalizes to the density $n_s$. From Poisson's equation
+$k^2=4\pi\sum_sq_sn_s$, we can write the general dispersion relation of a
+kinetic plasma
+\begin{equation}\label{eq:general dispersion relation}
+    k^2=\sum_s\frac{4\pi q_s^2}{m_s}
+    \int_{\R^3}d\vb{v}_s\frac{\vb{k}\vdot\partial f_s^0/\partial\vb{v}_s}
+        {\vb{k}\vdot\vb{v}_s-\omega}
+\end{equation}
+This corresponds directly with $H\qty(k,\omega/k)$ from (5.2.16) in
+\cite{Benz1993}. Under an extension to the complex field, suppose
+$\omega=\Omega_k+i\gamma_k$ and the integral can be evaluated in the curve
+$C=\R^3\cap\C^3$. Since it is only of physical interest that
+$\partial f_s^0/\partial\vb{v}_s$ is analytic over $\C^3$, the integrand in
+\cref{eq:general dispersion relation} is meromorphic with a pole at
+$\vb{k}\vdot\vb{v}_s=\omega$. From Sokhotski-Plemeji theorem, the integral
+evaluates as
+\begin{equation}\label{eq:3D integral evaluation}
+    \int_Cd\vb{v}_s
+        \frac{\vb{k}\vdot\partial f_s^0/\partial\vb{v}_s}
+        {\vb{k}\vdot\vb{v}_s-\omega}
+        =\pval\int_Cd\vb{v}_s\frac{\vb{k}\vdot\partial f_s^0/\partial\vb{v}_s}
+            {\vb{k}\vdot\vb{v}_s-\omega}
+            +i\pi\Eval{\frac{\partial f_s^0}{\partial\vb{v}_s}}
+                {\vb{k}\vdot\vb{v}_s=\omega}{}
+\end{equation}
+where $\pval$ is the Cauchy principal value and we have assumed $k>0$.
+
+Now, we consider the formulation of wave modes from the general plasma
+dispersion relation in \cref{eq:general dispersion relation} applied to
+Maxwellian particle distributions. For simplicity, let us also assume a
+one-dimensional system where $C=\R\cap\C$ and
+\begin{equation}\label{eq:maxwellian distribution}
+    f_s^0=\frac{n_s}{\sqrt\pi v_{th,s}}e^{-\eta_s^2}
+\end{equation}
+where $\eta_s=(v_s-u_s)/v_{th,s}$, $u_s$ is the drift speed, and
+$v_{th,s}=\sqrt{2T_s/m_s}$ is the thermal speed. Also, let
+$\lambda_s=(\omega/k-u_s)/v_{th,s}$. Then the dispersion relation now reads
+$k^2=\sum_sk_s^2$ where
+\begin{equation}\label{eq:dispersion relation contributions}
+    k_s^2=\frac{4\pi q_s^2}{m_sv_{th,s}}
+        \int_Cd\eta_s\frac{\partial f_s^0/\partial\eta_s}{\eta_s-\lambda_s}
+\end{equation}
+Similar to \cref{eq:3D integral evaluation}, the integral evaluates as
+\begin{equation}
+    \int_Cd\eta_s\frac{\partial f_s^0/\partial\eta_s}{\eta_s-\lambda_s}
+    =\pval\int_Cd\eta_s\frac{\partial f_s^0/\partial\eta_s}{\eta_s-\lambda_s}
+    +i\pi\Eval{\frac{\partial f_s^0}{\partial\eta_s}}{\eta_s=\lambda_s}{}
+\end{equation}
+Since $f_s^0$ is known, the principal part is
+\begin{equation}\label{eq:1D_integral_evaluation}
+    \pval\int_Cd\eta_s\frac{\partial f_s^0/\partial\eta_s}{\eta_s-\lambda_s}
+    =-\frac{2n_s}{\sqrt\pi v_{th,s}}
+        \pval\int_Cd\eta_s\frac{\eta_s}{\eta_s-\lambda_s}e^{-\eta_s^2}
+\end{equation}
+
+Note that we have assumed $\omega=\Omega_k+i\gamma_k$ where
+$\Omega_k,\gamma_k\in\R$. The electric field, for example, can be written as
+\begin{equation}
+    E(z,t)=E_0e^{i(kz-\omega t)}=E_0e^{i(kz-\Omega_kt)}e^{-\gamma_kt}
+\end{equation}
+The real frequency $\Omega_k$ contributes to the phase velocity
+$v_\phi=\Omega_k/k$ of the generated waves. The imaginary term $\gamma_k$
+describes either the damping or growth of the field magnitude depending on its
+sign. This mechanism is called Landau damping. From the form of \cref{eq:3D
+integral evaluation}, it is apparent that this imaginary term comes from the
+contribution of the pole at the resonant phase velocity $v_\phi$. Thus, it is
+closely connected to particles in resonance with the generated waves. In the
+wave frame, these particles are able to effectively exchange energy with
+the wave, either making it grow or damp away exponentially.
+

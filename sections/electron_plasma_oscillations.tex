@@ -1,0 +1,78 @@
+\section{Plasma waves}\label{sec:plasma waves}
+
+
+In this section, we consider some wave modes permitted by the kinetic plasma
+dispersion relation and their growth rate in different regimes.
+The background population usually consists of electrons and ions. Electrons,
+being the less inertial particles (since $m_e/m_i\sim1/1836$), are more mobile.
+They can lose and gain energy to and from the waves much more easily than the
+ions. Thus, the most dominant plasma wave mode is the electron oscillations and
+we can consider background ions as stationary.
+
+\subsection{Background electrons}
+
+Now, background electrons have $u_e=0$. So $\lambda_e=\omega/kv_{th,e}$.
+Generally, the electron beam of interest has $u_{be}\gg v_{th,e}$. Thus, we also
+assume $\abs{\lambda_e}\gg1$. Under a Taylor expansion, the integral in
+\cref{eq:1D_integral_evaluation} becomes
+
+\begin{equation}
+    \pval\int_Cd\eta_e\frac{\eta_e}{\eta_e-\lambda_e}e^{-\eta_e^2}
+    =-\frac1{\lambda_e}\pval\int_Cd\eta_ee^{-\eta_e^2}
+        \sum_{j=0}^\infty\frac{\eta_e^{j+1}}{\lambda_e^j}
+    \approx-\frac{\sqrt\pi}{2}\qty(\frac1{\lambda_e^2}
+        +\frac32\frac1{\lambda_e^4})
+\end{equation}
+The contribution from the pole at $\eta_e=\lambda_e$ scales as
+$e^{-\lambda_e^2}$. Thus, in terms of magnitude, it is negligible and we can
+write the contribution of the background electrons to the dispersion relation as
+\begin{equation}
+    k_e^2=\frac{k^2\omega_{pe}^2}{\omega^2}
+        \qty(1+\frac32\frac{k^2v_{th,e}^2}{\omega^2})
+\end{equation}
+Neglecting the other species' contributions, we can invert the expression and
+write
+\begin{equation}
+    \omega^2=\omega_{pe}^2\qty(1+\frac32\frac{k^2v_{th,e}^2}{\omega^2})
+\end{equation}
+The first term is the solution for a cold plasma, which results in
+$\omega=\omega_{pe}$. The second term gives the next non-trivial correction for
+$T_e\neq0$ which, to the first order, is the Bohm-Gross dispersion relation
+\begin{equation}
+    \omega^2=\omega_{pe}^2+\frac32k^2v_{th,e}^2
+\end{equation}
+
+Now, to approximate the imaginary term, we use the cold plasma solution
+$\omega=\omega_{pe}$ and write the electron contribution to $k^2$ in full
+form
+\begin{equation}
+    k_e^2=\frac{k^2\omega_{pe}^2}{\omega^2}
+    \qty(1
+        +\frac{i\pi}{n_ev_{th,e}}\frac{\omega^2}{k^2}
+        \Eval{\frac{\partial f_e^0}{\partial\eta_e}}{\eta_e=\lambda_e}{})
+\end{equation}
+Again, ignoring the other contributions, we can invert and find
+\begin{equation}
+    \omega=\qty(\omega_{pe}^{-2}
+    -\frac{i\pi}{k^2n_ev_{th,e}}
+    \Eval{\frac{\partial f_e^0}{\partial\eta_e}}{\eta_e=\lambda_e}{}
+    )^{-1/2}=\qty(\omega_{pe}^{-2}-i\epsilon)^{-1/2}
+\end{equation}
+As established above, $\epsilon$ is small. So a Taylor expansion brings the
+solution to the form
+\begin{equation}
+    \omega\sim\omega_{pe}\qty(
+        1+\frac{i\pi}{2}\frac{\omega_{pe}^2}{k^2n_ev_{th,e}}
+        \Eval{\frac{\partial f_e^0}{\partial\eta_e}}{\eta_e=\lambda_e}{}
+    )
+\end{equation}
+Then it follows that
+\begin{equation}
+    \gamma_k=-\sqrt\pi\frac1{\qty(k\lambda_D)^3}\exp\qty[-\frac1{(k\lambda_D)^2}]<0
+\end{equation}
+where $\lambda_D=v_{th,e}/\omega_{pe}$ is the Debye length. The growth rate
+is always negative, which means this wave mode is damped everywhere. This is
+only valid for our assumption regarding $\lambda_e$, which is when
+$k\lambda_D\ll1$. For $k\lambda_D\geq0.5$, the rate grows linearly before it
+decreases exponentially and our assumption of small $\epsilon$ is violated.
+
